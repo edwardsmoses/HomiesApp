@@ -5,13 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:Homies.Carousel"
              mc:Ignorable="d"
-             x:Class="Homies.Carousel.WelcomePage" BackgroundColor="Black">
+             x:Class="Homies.Carousel.WelcomePage" BackgroundImageSource="stock.jpg">
     <ContentPage.Content>
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-
-            <local:VideoPlayerView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-			    AbsoluteLayout.LayoutBounds="0, 0, 1, 0.9"  x:Name="videoPlayer"
-                AbsoluteLayout.LayoutFlags="All"  />
 
             <StackLayout HorizontalOptions="FillAndExpand"
                VerticalOptions="FillAndExpand"
@@ -19,25 +15,19 @@
                AbsoluteLayout.LayoutFlags="All"
                x:Name="logoLayout">
                 <StackLayout Padding="30">
-                    <Image Source="logo" />
+                    <Image Source="logo.png" WidthRequest="100" />
                 </StackLayout>
             </StackLayout>
 
-            <CarouselView ItemsSource="{Binding MyDataSource}" AbsoluteLayout.LayoutBounds="0, 0.7, 1, 0.1" 
+            <StackLayout AbsoluteLayout.LayoutBounds="0, 0.7, 1, 0.1" 
                 AbsoluteLayout.LayoutFlags="All">
-                <CarouselView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout  HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
-                            <Label Text="{Binding Title}" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="White"  HorizontalOptions="CenterAndExpand"/>
-                            <Label Text="{Binding Detail}" HorizontalTextAlignment="Center" TextColor="White" HorizontalOptions="CenterAndExpand"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </CarouselView.ItemTemplate>
-            </CarouselView>
+                <StackLayout  HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
+                    <Label Text="Welcome to Homies" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="White"  HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Book your lunch with homies" HorizontalTextAlignment="Center" TextColor="White" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
 
-            <local:CarouselIndicators IndicatorHeight="12" IndicatorWidth="12" UnselectedIndicator="unselected_circle.png" SelectedIndicator="selected_circle.png" Position="{Binding Position}" ItemsSource="{Binding MyDataSource}"
-			AbsoluteLayout.LayoutBounds="0, 0.9, 1, 0.1" 
-            AbsoluteLayout.LayoutFlags="All"/>
+            </StackLayout>
+
 
 
             <Button BackgroundColor="Blue" TextColor="White" BorderRadius="0" Text="Login"  
