@@ -9,12 +9,16 @@ namespace Homies
     public partial class App : Application
     {
 
+        public static double ScreenWidth;
+        public static double ScreenHeight;
+
         public App()
         {
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+
+            MainPage = new Carousel.WelcomePage();
         }
 
         protected override void OnStart()
