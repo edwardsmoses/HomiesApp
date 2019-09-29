@@ -5,6 +5,7 @@
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        mc:Ignorable="d"
        xmlns:local="clr-namespace:Homies.Views"
+       xmlns:welcomePages="clr-namespace:Homies.Pages.Welcome"
        Title="Homies"
        x:Class="Homies.AppShell">
 
@@ -29,8 +30,20 @@
         </ResourceDictionary>
     </Shell.Resources>
 
+
+    <ShellItem Route="Welcome">
+        <ShellContent ContentTemplate="{DataTemplate welcomePages:WelcomePage}" />
+    </ShellItem>
+
+    <ShellItem Route="Login">
+        <ShellContent ContentTemplate="{DataTemplate welcomePages:LoginPage}" />
+    </ShellItem>
+    
+    
+
+
     <!-- Your Pages -->
-    <TabBar>
+    <TabBar Route="Main">
         <Tab Title="Browse" Icon="tab_feed.png">
             <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
         </Tab>

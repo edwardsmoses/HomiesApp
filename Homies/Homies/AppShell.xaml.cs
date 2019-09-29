@@ -10,6 +10,15 @@ namespace Homies
         public AppShell()
         {
             InitializeComponent();
+
+            RegisterRoutes();
         }
+
+        private void RegisterRoutes()
+        {
+            //Routing.RegisterRoute("Welcome", typeof(Pages.Welcome.WelcomePage));
+        }
+
+       
     }
 }
