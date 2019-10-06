@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Homies.Services;
 using Homies.Views;
+using Xamarin.Essentials;
 
 namespace Homies
 {
@@ -16,6 +17,18 @@ namespace Homies
             DependencyService.Register<MockDataStore>();
 
             MainPage = new AppShell();
+
+            CheckIfUserIsLoggedIn();
+
+        }
+
+        private async void CheckIfUserIsLoggedIn()
+        {
+            //if the Access Token stored is not empty
+            if (!string.IsNullOrWhiteSpace(await SecureStorage.GetAsync(Common.GlobalConstants.AppAuthToken)))
+            {
+                await Shell.Current.GoToAsync("//Main", true); //go to the Main Page
+            }
         }
 
         protected override void OnStart()

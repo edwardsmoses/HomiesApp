@@ -19,9 +19,12 @@ namespace Homies.Pages.Welcome
 
         private async void LoginButton_Clicked(object sender, EventArgs e)
         {
-            //Navigation.PushModalAsync(new Pages.Welcome.LoginPage(), true);
             await Shell.Current.GoToAsync("//Login");
+        }
 
+        private async void SignUpButton_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//SignUp");
         }
     }
 }

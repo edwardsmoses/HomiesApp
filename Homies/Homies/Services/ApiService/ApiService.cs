@@ -23,7 +23,9 @@ namespace Homies.Services.ApiService
             var json = JsonConvert.SerializeObject(registerModel);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await httpClient.PostAsync($"{Common.ApiConstants.ApiClientUrl}/Account/Register", content);
+            var registerUrl = $"{Common.ApiConstants.HomiesApiUrl}/Account/Register";
+
+            var response = await httpClient.PostAsync(new Uri(registerUrl), content);
             return response.IsSuccessStatusCode;
         }
 

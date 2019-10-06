@@ -36,7 +36,7 @@
                 AbsoluteLayout.LayoutFlags="All" x:Name="LoginButton" Clicked="LoginButton_Clicked" />
 
             <Button BackgroundColor="Black" TextColor="White" BorderRadius="0" Text="Sign Up"
-			    AbsoluteLayout.LayoutBounds="1, 1, 0.5, 0.1" 
+			    AbsoluteLayout.LayoutBounds="1, 1, 0.5, 0.1"  x:Name="SignUpButton" Clicked="SignUpButton_Clicked"
                 AbsoluteLayout.LayoutFlags="All" />
         </AbsoluteLayout>
     </ContentPage.Content>

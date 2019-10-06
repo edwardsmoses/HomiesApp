@@ -38,8 +38,11 @@
     <ShellItem Route="Login">
         <ShellContent ContentTemplate="{DataTemplate welcomePages:LoginPage}" />
     </ShellItem>
-    
-    
+
+    <ShellItem Route="SignUp">
+        <ShellContent ContentTemplate="{DataTemplate welcomePages:SignUpPage}" />
+    </ShellItem>
+
 
 
     <!-- Your Pages -->

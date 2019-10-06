@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Homies
@@ -11,13 +11,9 @@ namespace Homies
         {
             InitializeComponent();
 
-            RegisterRoutes();
         }
 
-        private void RegisterRoutes()
-        {
-            //Routing.RegisterRoute("Welcome", typeof(Pages.Welcome.WelcomePage));
-        }
+       
 
        
     }

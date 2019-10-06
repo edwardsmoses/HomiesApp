@@ -4,8 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Homies.Pages.Welcome.LoginPage"
-              Shell.NavBarIsVisible="False"
+             x:Class="Homies.Pages.Welcome.SignUpPage"  
+             Shell.NavBarIsVisible="False"
              Shell.FlyoutBehavior="Disabled">
 
     <Grid>
@@ -16,27 +16,27 @@
         </Grid.RowDefinitions>
 
         <StackLayout Grid.Row="0" Margin="0,40,0,0" HorizontalOptions="Center">
-            <Image WidthRequest="100" Source="icon.png"></Image>
-            <Label Text="Welcome to Homies" FontSize="Medium"></Label>
+            <Image WidthRequest="60" Source="icon.png"></Image>
+            <Label Text="Create My Homies Account" FontSize="Medium"></Label>
         </StackLayout>
 
         <StackLayout Grid.Row="1" Margin="40,0,40,0" VerticalOptions="CenterAndExpand">
             <Entry Placeholder="Email" PlaceholderColor="#707070" x:Name="EmailEntry"></Entry>
             <Entry Placeholder="Password" PlaceholderColor="#707070" x:Name="PasswordEntry" IsPassword="True"></Entry>
-            <Button Text="Login" BackgroundColor="Green" TextColor="White" CornerRadius="30"
-                    HeightRequest="50" x:Name="LoginButton" Clicked="LoginButton_Clicked"></Button>
+            <Entry Placeholder="Confirm Password" PlaceholderColor="#707070" x:Name="ConfirmPasswordEntry" IsPassword="True"></Entry>
+
+            <Button Text="Sign Up" BackgroundColor="Green" TextColor="White" CornerRadius="30"
+                    HeightRequest="50" x:Name="SignUpButton" Clicked="SignUpButton_Clicked"></Button>
         </StackLayout>
 
         <StackLayout Grid.Row="2" Padding="20" Orientation="Horizontal" HorizontalOptions="Center">
-            <Label Text="Don't have an account?" TextColor="#594748"></Label>
-            <Label Text="Sign Up." TextColor="Green">
+            <Label Text="Already have an account?" TextColor="#594748"></Label>
+            <Label Text="Sign In." TextColor="Green">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="TapSignUp" Tapped="TapSignUp_TappedAsync"></TapGestureRecognizer>
+                    <TapGestureRecognizer x:Name="TapSignIn" Tapped="TapSignIn_Tapped"></TapGestureRecognizer>
                 </Label.GestureRecognizers>
             </Label>
         </StackLayout>
-        
+
     </Grid>
-    
-    
 </ContentPage>

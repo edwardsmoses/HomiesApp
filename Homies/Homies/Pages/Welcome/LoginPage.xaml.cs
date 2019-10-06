@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -27,11 +27,18 @@ namespace Homies.Pages.Welcome
             var apiService = new Services.ApiService.ApiService();
             var tokenResponse = await apiService.GetTokenAsync(EmailEntry.Text, PasswordEntry.Text);
             if (string.IsNullOrEmpty(tokenResponse.access_token))
-                await DisplayAlert("Error", "Incorrect usename or password", "Alright");
+                await DisplayAlert("Uh-oh!", "Incorrect usename or password", "Alright");
             else
             {
+                await SecureStorage.SetAsync(Common.GlobalConstants.AppAuthToken, "secret-oauth-token-value");
+
                 await Shell.Current.GoToAsync("//Main", true);
             }
+        }
+
+        private async void TapSignUp_TappedAsync(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//SignUp");
         }
     }
 }
