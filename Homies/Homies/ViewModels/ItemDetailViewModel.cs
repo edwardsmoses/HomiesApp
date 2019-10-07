@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Homies.Models;
+using Homies.ViewModels.HomeViewModels;
 
 namespace Homies.ViewModels
 {

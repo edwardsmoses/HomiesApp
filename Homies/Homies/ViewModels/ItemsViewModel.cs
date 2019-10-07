@@ -7,6 +7,7 @@ using Xamarin.Forms;
 
 using Homies.Models;
 using Homies.Views;
+using Homies.ViewModels.HomeViewModels;
 
 namespace Homies.ViewModels
 {

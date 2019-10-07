@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Homies.ViewModels.HomeViewModels;
+using System;
 using System.Windows.Input;
 
 using Xamarin.Forms;

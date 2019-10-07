@@ -8,7 +8,7 @@ using Xamarin.Forms;
 using Homies.Models;
 using Homies.Services;
 
-namespace Homies.ViewModels
+namespace Homies.ViewModels.HomeViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
