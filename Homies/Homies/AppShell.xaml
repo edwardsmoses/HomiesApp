@@ -6,6 +6,7 @@
        mc:Ignorable="d"
        xmlns:local="clr-namespace:Homies.Views"
        xmlns:welcomePages="clr-namespace:Homies.Pages.Welcome"
+       xmlns:mainPages="clr-namespace:Homies.Pages.Main"
        Title="Homies"
        x:Class="Homies.AppShell">
 
@@ -14,7 +15,7 @@
     -->
     <Shell.Resources>
         <ResourceDictionary>
-            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Color x:Key="NavigationPrimary">Green</Color>
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="Shell.ForegroundColor" Value="White" />
@@ -47,6 +48,9 @@
 
     <!-- Your Pages -->
     <TabBar Route="Main">
+        <Tab Title="Home" Icon="hamburger.png">
+            <ShellContent ContentTemplate="{DataTemplate mainPages:MainPage}" />
+        </Tab>
         <Tab Title="Browse" Icon="tab_feed.png">
             <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
         </Tab>
