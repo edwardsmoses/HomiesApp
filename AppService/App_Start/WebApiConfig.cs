@@ -17,6 +17,9 @@ namespace AppService
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
+            //Log Request And Response
+            config.MessageHandlers.Add(new Services.LogHandlers.CustomLogHandler());
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 

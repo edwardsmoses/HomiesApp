@@ -18,6 +18,10 @@ namespace Data
 
         //TO-DO 
         //all the Tables for this App
+        public virtual IDbSet<Category> Categories { get; set; }
+
+        public virtual IDbSet<Food> Foods { get; set; }
+        public virtual IDbSet<FoodPicture> FoodPictures { get; set; }
 
 
         public static HomiesDbContext Create()

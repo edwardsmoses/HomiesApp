@@ -10,7 +10,9 @@ namespace Data.Services.UnitOfWork
 
         //TO-Do
         //create the other tables properties here
-
+        IDeletableEntityRepository<Food> Foods { get; }
+        IDeletableEntityRepository<FoodPicture> FoodPictures { get; }
+        IDeletableEntityRepository<Category> Categories { get; }
 
         void SaveChanges();
         Task SaveChangesAsync();

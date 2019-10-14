@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace Common.Models
+﻿namespace Common.Models
 {
+
     public class Destination
     {
         public string Title { get; set; }

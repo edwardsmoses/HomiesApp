@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Data.Services.UnitOfWork
 {
-    public class TrappDataSystem : IHomiesDataSystem
+    public class HomiesDataSystem : IHomiesDataSystem
     {
         private readonly DbContext dbContext;
 
@@ -19,7 +19,7 @@ namespace Data.Services.UnitOfWork
         private IUserStore<ApplicationUser> userStore;
 
 
-        public TrappDataSystem(DbContext context)
+        public HomiesDataSystem(DbContext context)
         {
             dbContext = context;
             repositories = new Dictionary<Type, object>();
@@ -34,7 +34,9 @@ namespace Data.Services.UnitOfWork
         //To-do
         //implement the unit-of-works properties for the Application right here
 
-        //public IDeletableEntityRepository<Order> Orders => GetRepository<Order>();
+        public IDeletableEntityRepository<Food> Foods => GetRepository<Food>();
+        public IDeletableEntityRepository<FoodPicture> FoodPictures => GetRepository<FoodPicture>();
+        public IDeletableEntityRepository<Category> Categories => GetRepository<Category>();
 
 
         public void SaveChanges()

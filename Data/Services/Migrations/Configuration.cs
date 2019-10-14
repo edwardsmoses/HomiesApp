@@ -3,6 +3,7 @@ using Data.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
@@ -20,6 +21,8 @@ namespace Data.Services.Migrations
         {
             SeedRoles(context);
             SeedUsers(context);
+
+            SeedCategoryAndFood(context);
         }
 
         private void SeedRoles(HomiesDbContext context)
@@ -66,6 +69,70 @@ namespace Data.Services.Migrations
                 userManager.AddToRole(admin.Id, RoleConstants.Admin);
 
                 context.SaveChanges();
+            }
+        }
+
+
+        private void SeedCategoryAndFood(HomiesDbContext context)
+        {
+            if (!context.Categories.Any())
+            {
+                context.Categories.AddOrUpdate(x => x.Name,
+                    new Category()
+                    {
+                        
+                        CreatedOn = DateTime.Now,
+                        Name = "Rice",
+                        Foods = new List<Food>()
+                        {
+                            new Food()
+                            {
+                                
+                                CreatedOn = DateTime.Now,
+                                Name = "Fried Rice",
+                                IsMealOfTheDay = true,
+                                Currency = Currency.Naira,
+                                Price = 600,
+                            },
+                            new Food()
+                            {
+                                
+                                CreatedOn = DateTime.Now,
+                                Name = "Jollof Rice",
+                                IsMealOfTheDay = false,
+                                Currency = Currency.Naira,
+                                Price = 500,
+                            }
+                        }
+                    },
+                     new Category()
+                     {
+                         Id = Guid.NewGuid(),
+                         CreatedOn = DateTime.Now,
+                         Name = "Beans",
+                         Foods = new List<Food>()
+                         {
+                             new Food()
+                             {
+                                 
+                                 CreatedOn = DateTime.Now,
+                                 Name = "Beans",
+                                 IsMealOfTheDay = false,
+                                 Currency = Currency.Naira,
+                                 Price = 400,
+                             },
+                             new Food()
+                             {
+                                 
+                                 CreatedOn = DateTime.Now,
+                                 Name = "Beans & Plantain",
+                                 IsMealOfTheDay = true,
+                                 Currency = Currency.Naira,
+                                 Price = 900,
+                             }
+                         }
+                     }
+                    );
             }
         }
     }
