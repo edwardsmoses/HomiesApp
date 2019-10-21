@@ -7815,6 +7815,9 @@ namespace Homies.Droid
 			// aapt resource value: 0x7f0c0032
 			public const int abc_toolbar_collapse_description = 2131492914;
 			
+			// aapt resource value: 0x7f0c004e
+			public const int appName = 2131492942;
+			
 			// aapt resource value: 0x7f0c0040
 			public const int appbar_scrolling_view_behavior = 2131492928;
 			
@@ -8637,6 +8640,9 @@ namespace Homies.Droid
 			
 			// aapt resource value: 0x7f09002c
 			public const int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = 2131296300;
+			
+			// aapt resource value: 0x7f090203
+			public const int SplashTheme = 2131296771;
 			
 			// aapt resource value: 0x7f0900d3
 			public const int TextAppearance_AppCompat = 2131296467;

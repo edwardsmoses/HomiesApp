@@ -1,4 +1,5 @@
-﻿using Data.Services.UnitOfWork;
+﻿using Common.ApiModels.FoodModels;
+using Data.Services.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,46 +9,30 @@ using System.Web.Http;
 
 namespace AppService.Controllers
 {
+    
     public class FoodsController : Base.BaseController
     {
         public FoodsController(IHomiesDataSystem data) : base(data)
         {
         }
 
-        // GET: api/Food
-        public IEnumerable<Common.Models.FoodApiModel> Get(int? count = 10, int? skip = 0)
+        // GET: api/Foods
+        public IEnumerable<FoodApiModel> Get(int? count = 10, int? skip = 0)
         {
-            var returnFoods = new List<Common.Models.FoodApiModel>();
-
-            var foods = this.Data.Foods.All().OrderByDescending(m => m.CreatedOn).Skip(skip.Value)
+            var foods = this.Data.Foods.All().Where(m => m.CanFoodShowOnApp).OrderByDescending(m => m.CreatedOn).Skip(skip.Value)
                 .Take(count.Value)
                 .ToList();
-            foreach (var c in foods)
-            {
-                var food = new Common.Models.FoodApiModel()
-                {
-                    CategoryName = c.Category.Name,
-                    Currency = c.Currency.ToString(),
-                    Description = c.Description,
-                    Id = c.Id,
-                    Name = c.Name,
-                    Price = c.Price,
-                };
-                if (c.Pictures.Any())
-                    food.PicturePath = c.Pictures.FirstOrDefault().FileName;
-                else
-                    food.PicturePath = Common.GlobalConstants.DefaultFoodPicture;
 
-                returnFoods.Add(food);
-            }
-
-            return returnFoods;
+            return  Mappers.FoodMapper.MapFoodDbModelToApiModels(foods);
         }
 
-        // GET: api/Food/5
-        public string Get(int id)
+        public Common.ApiModels.FoodModels.FoodApiModel Get(Guid id)
         {
-            return "value";
+            var foodDbModel = this.Data.Foods.GetById(id);
+            if(foodDbModel != null)
+                return Mappers.FoodMapper.MapSingleFoodToApiModel(foodDbModel);
+
+            return null;
         }
 
     }

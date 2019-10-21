@@ -80,28 +80,30 @@ namespace Data.Services.Migrations
                 context.Categories.AddOrUpdate(x => x.Name,
                     new Category()
                     {
-                        
+
                         CreatedOn = DateTime.Now,
                         Name = "Rice",
                         Foods = new List<Food>()
                         {
                             new Food()
                             {
-                                
+
                                 CreatedOn = DateTime.Now,
                                 Name = "Fried Rice",
                                 IsMealOfTheDay = true,
                                 Currency = Currency.Naira,
                                 Price = 600,
+                                CanFoodShowOnApp = true
                             },
                             new Food()
                             {
-                                
+
                                 CreatedOn = DateTime.Now,
                                 Name = "Jollof Rice",
                                 IsMealOfTheDay = false,
                                 Currency = Currency.Naira,
                                 Price = 500,
+                                CanFoodShowOnApp = true
                             }
                         }
                     },
@@ -114,21 +116,23 @@ namespace Data.Services.Migrations
                          {
                              new Food()
                              {
-                                 
+
                                  CreatedOn = DateTime.Now,
                                  Name = "Beans",
                                  IsMealOfTheDay = false,
                                  Currency = Currency.Naira,
                                  Price = 400,
+                                 CanFoodShowOnApp = true
                              },
                              new Food()
                              {
-                                 
+
                                  CreatedOn = DateTime.Now,
                                  Name = "Beans & Plantain",
                                  IsMealOfTheDay = true,
                                  Currency = Currency.Naira,
                                  Price = 900,
+                                 CanFoodShowOnApp = true
                              }
                          }
                      }

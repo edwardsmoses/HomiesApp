@@ -90,8 +90,10 @@
                                     <Image Aspect="AspectFill" Source="{Binding ImageUrl}" />
                                     <custom:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundGradientStartColor="Transparent" BackgroundGradientEndColor="#222" />
                                     <StackLayout Spacing="0" Margin="12" VerticalOptions="EndAndExpand">
-                                        <Label FontSize="16" FontFamily="{StaticResource TextBold}" TextColor="#fff" Text="{Binding Title}" />
-                                        <Label FontSize="12" FontFamily="{StaticResource TextRegular}" TextColor="#ccc" Text="{Binding RatingVotes}" />
+                                        <Label FontSize="16" FontFamily="{StaticResource TextBold}" TextColor="#fff" Text="{Binding Name}" />
+                                        <Label FontSize="16" FontFamily="{StaticResource TextBold}" TextColor="Green" Text="{Binding PriceInCurrency}" />
+
+                                        <!--<Label FontSize="12" FontFamily="{StaticResource TextRegular}" TextColor="#ccc" Text="{Binding RatingVotes}" />-->
                                     </StackLayout>
                                 </Grid>
                             </custom:PancakeView>

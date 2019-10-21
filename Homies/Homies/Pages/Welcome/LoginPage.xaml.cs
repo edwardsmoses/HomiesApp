@@ -15,25 +15,21 @@ namespace Homies.Pages.Welcome
         public LoginPage()
         {
             InitializeComponent();
-        }
 
-        private async void Button_Clicked(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync("//Main");
-        }
 
-        private async void LoginButton_Clicked(object sender, EventArgs e)
-        {
-            var apiService = new Services.ApiService.ApiService();
-            var tokenResponse = await apiService.GetTokenAsync(EmailEntry.Text, PasswordEntry.Text);
-            if (string.IsNullOrEmpty(tokenResponse.access_token))
-                await DisplayAlert("Uh-oh!", "Incorrect usename or password", "Alright");
-            else
-            {
-                await SecureStorage.SetAsync(Common.GlobalConstants.AppAuthToken, "secret-oauth-token-value");
+            var viewModel = new ViewModels.AccountModels.LoginPageModel();
 
-                await Shell.Current.GoToAsync("//Main", true);
-            }
+            BindingContext = viewModel;
+
+            EmailEntry.Completed += (object sender, EventArgs e) => {
+                PasswordEntry.Focus();
+            };
+
+            PasswordEntry.Completed += (object sender, EventArgs e) => {
+                viewModel.LoginCommand.Execute(null);
+            };
+
+
         }
 
         private async void TapSignUp_TappedAsync(object sender, EventArgs e)

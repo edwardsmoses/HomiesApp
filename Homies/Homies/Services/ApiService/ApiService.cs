@@ -42,5 +42,25 @@ namespace Homies.Services.ApiService
 
             return result;
         }
+
+        public async Task<List<Common.ApiModels.FoodModels.FoodApiModel>> GetAllFoodsAsync()
+        {
+            var httpClient = new HttpClient();
+
+            //the Foods Repsonse from the Server
+            var foodsResponse = await httpClient.GetStringAsync($"{Common.ApiConstants.HomiesApiUrl}/Foods");
+            return JsonConvert.DeserializeObject<List<Common.ApiModels.FoodModels.FoodApiModel>>(foodsResponse);
+        }
+
+        public async Task<Common.ApiModels.FoodModels.FoodApiModel> GetFoodAsync(string id)
+        {
+            var httpClient = new HttpClient();
+
+            var foodResponse = await httpClient.GetStringAsync($"{Common.ApiConstants.HomiesApiUrl}/Foods/{id}");
+            return JsonConvert.DeserializeObject<Common.ApiModels.FoodModels.FoodApiModel>(foodResponse);
+        }
+
+
+
     }
 }

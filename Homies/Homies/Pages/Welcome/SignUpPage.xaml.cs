@@ -15,28 +15,23 @@ namespace Homies.Pages.Welcome
         public SignUpPage()
         {
             InitializeComponent();
-        }
 
-        private async void SignUpButton_Clicked(object sender, EventArgs e)
-        {
-            var apiService = new Services.ApiService.ApiService();
-            var signUpUserResponse = await apiService.RegisterUserAsync(EmailEntry.Text, PasswordEntry.Text, ConfirmPasswordEntry.Text);
-            if (signUpUserResponse)
-            {
-                //after SignUp, get the token response, and navigate to the Main Page
-                var tokenResponse = await apiService.GetTokenAsync(EmailEntry.Text, PasswordEntry.Text);
+            var viewModel = new ViewModels.AccountModels.SignUpPageModel();
 
-                if (string.IsNullOrEmpty(tokenResponse.access_token))
-                    await Shell.Current.GoToAsync("//Login"); //if you can't get the Token, then go to the Login Page
-                else
-                {
-                    //but if you can then get the Token and store it.
-                    await SecureStorage.SetAsync(Common.GlobalConstants.AppAuthToken, "secret-oauth-token-value");
-                    await Shell.Current.GoToAsync("//Main", true); //go to the Main Page
-                }
-            }
-            else
-                await DisplayAlert("Uh-oh!", "Something went wrong while creating your account.", "Cancel");
+            BindingContext = viewModel;
+
+            EmailEntry.Completed += (object sender, EventArgs e) => {
+                PasswordEntry.Focus();
+            };
+
+            PasswordEntry.Completed += (object sender, EventArgs e) => {
+                ConfirmPasswordEntry.Focus();
+            };
+
+            ConfirmPasswordEntry.Completed += (object sender, EventArgs e) => {
+                viewModel.SignUpCommand.Execute(null);
+            };
+
         }
 
         private async void TapSignIn_Tapped(object sender, EventArgs e)

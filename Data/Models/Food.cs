@@ -26,7 +26,11 @@ namespace Data.Models
 
         public string Reciept { get; set; }
 
+        public DateTime? LastDateSetAsMealOfTheDay { get; set; }
+
         public bool IsMealOfTheDay { get; set; }
+
+        public bool CanFoodShowOnApp { get; set; }
 
 
         [Required]

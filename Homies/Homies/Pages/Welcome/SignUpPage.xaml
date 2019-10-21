@@ -21,12 +21,20 @@
         </StackLayout>
 
         <StackLayout Grid.Row="1" Margin="40,0,40,0" VerticalOptions="CenterAndExpand">
-            <Entry Placeholder="Email" PlaceholderColor="#707070" x:Name="EmailEntry"></Entry>
-            <Entry Placeholder="Password" PlaceholderColor="#707070" x:Name="PasswordEntry" IsPassword="True"></Entry>
-            <Entry Placeholder="Confirm Password" PlaceholderColor="#707070" x:Name="ConfirmPasswordEntry" IsPassword="True"></Entry>
+            <Label Text="Email"></Label>
+            <Entry Placeholder="Email" BackgroundColor="Green" TextColor="White" x:Name="EmailEntry" Text="{Binding Email, Mode=TwoWay}"></Entry>
 
-            <Button Text="Sign Up" BackgroundColor="Green" TextColor="White" CornerRadius="30"
-                    HeightRequest="50" x:Name="SignUpButton" Clicked="SignUpButton_Clicked"></Button>
+            <Label Text="Password"></Label>
+            <Entry Placeholder="Password" BackgroundColor="Green" TextColor="White" x:Name="PasswordEntry" IsPassword="True"
+                   Text="{Binding Password, Mode=TwoWay}"></Entry>
+
+            <Label Text="Repeat Password Again"></Label>
+            <Entry Placeholder="Confirm Password" BackgroundColor="Green" TextColor="White" x:Name="ConfirmPasswordEntry" IsPassword="True"
+                   Text="{Binding ConfirmPassword, Mode=TwoWay}"></Entry>
+
+            <Button Text="Sign Up" BackgroundColor="Green" TextColor="White" CornerRadius="30" Margin="10,40"
+                    HeightRequest="50" x:Name="SignUpButton" Command="{Binding SignUpCommand}"></Button>
+
         </StackLayout>
 
         <StackLayout Grid.Row="2" Padding="20" Orientation="Horizontal" HorizontalOptions="Center">
@@ -37,6 +45,22 @@
                 </Label.GestureRecognizers>
             </Label>
         </StackLayout>
+
+        <ActivityIndicator
+                    Margin="0,200,0,0"
+                    HorizontalOptions="Center"
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}"
+                    VerticalOptions="Center"
+                    Color="Green">
+            <ActivityIndicator.WidthRequest>
+                <OnPlatform
+                            x:TypeArguments="x:Double"
+                            Android="100"
+                            WinPhone="400"
+                            iOS="100" />
+            </ActivityIndicator.WidthRequest>
+        </ActivityIndicator>
 
     </Grid>
 </ContentPage>
