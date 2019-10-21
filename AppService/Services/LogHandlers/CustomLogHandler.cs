@@ -14,7 +14,9 @@ namespace AppService.Services.LogHandlers
         {
             var logMetadata = BuildRequestMetadata(request);
             var response = await base.SendAsync(request, cancellationToken);
-            logMetadata = BuildResponseMetadata(logMetadata, response);
+            if(response != null)
+                logMetadata = BuildResponseMetadata(logMetadata, response);
+
             SendToLog(logMetadata);
             return response;
         }

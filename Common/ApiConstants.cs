@@ -6,11 +6,13 @@ namespace Common
 {
     public class ApiConstants
     {
-        private const string OnlineClientUrl = "http://homiesapi.tra-pp.com";
+        public const string OnlineHomiesUrl = "http://homiesapi.tra-pp.com";
+        public const string HomiesApi = "/api";
+
+        public const string HomiesPicturePath = "/Content/uploads/";
+
         private const string ApiClientUrlForAndroidEmulator = "https://localhost:44355/";
 
-        public static string ApiClientUrl => OnlineClientUrl;
-        public static string HomiesApiUrl => $"{OnlineClientUrl}/api";
 
     }
 }

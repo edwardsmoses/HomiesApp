@@ -50,7 +50,7 @@
                         </Grid.ColumnDefinitions>
                         <StackLayout Grid.Column="0" Margin="20,0,0,0" Spacing="0" VerticalOptions="Center">
                             <Label Text="Fried Rice" FontSize="24" FontFamily="{StaticResource TextBold}" />
-                            <Label Text="Recommendation" TextColor="#666" FontSize="16" FontFamily="{StaticResource TextRegular}" />
+                            <Label Text="Meal of the Day" TextColor="#666" FontSize="16" FontFamily="{StaticResource TextBold}" />
                         </StackLayout>
                         <StackLayout Grid.Column="1" Spacing="0" Margin="0,0,20,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
                             <Label FontSize="20" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontFamily="{StaticResource FontAwesomeSolid}">
@@ -75,23 +75,23 @@
             </Grid>
         </custom:PancakeView>
         <StackLayout Orientation="Horizontal">
-            <Label HorizontalOptions="Start" VerticalOptions="Center" Text="Hot places" FontFamily="{StaticResource TextBold}" FontSize="20" Margin="20,20,20,0" />
+            <Label HorizontalOptions="Start" VerticalOptions="Center" Text="Meals on Homies" FontFamily="{StaticResource TextBold}" FontSize="20" Margin="20,20,20,0" />
             <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="#2687ee" Text="SEE ALL" FontSize="12" FontFamily="{StaticResource TextBold}" Margin="20,20,20,0" />
         </StackLayout>
 
         <!--Alternative implementation-->
         <ScrollView Orientation="Horizontal">
-            <StackLayout Spacing="0" Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Destinations}" HeightRequest="120">
+            <StackLayout Spacing="0" Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Foods}" HeightRequest="120">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <Grid Padding="10,0">
                             <custom:PancakeView HeightRequest="120" WidthRequest="200" IsClippedToBounds="true" CornerRadius="12">
                                 <Grid>
-                                    <Image Aspect="AspectFill" Source="{Binding ImageUrl}" />
+                                    <Image Aspect="AspectFill" Source="{Binding FullPictureUrl}" />
                                     <custom:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundGradientStartColor="Transparent" BackgroundGradientEndColor="#222" />
                                     <StackLayout Spacing="0" Margin="12" VerticalOptions="EndAndExpand">
                                         <Label FontSize="16" FontFamily="{StaticResource TextBold}" TextColor="#fff" Text="{Binding Name}" />
-                                        <Label FontSize="16" FontFamily="{StaticResource TextBold}" TextColor="Green" Text="{Binding PriceInCurrency}" />
+                                        <Label FontSize="16" FontFamily="{StaticResource TextBold}" TextColor="#fff" Text="{Binding PriceInCurrency}" />
 
                                         <!--<Label FontSize="12" FontFamily="{StaticResource TextRegular}" TextColor="#ccc" Text="{Binding RatingVotes}" />-->
                                     </StackLayout>
@@ -102,43 +102,6 @@
                 </BindableLayout.ItemTemplate>
             </StackLayout>
         </ScrollView>
-        <StackLayout Orientation="Horizontal">
-            <Label HorizontalOptions="Start" VerticalOptions="Center" Text="Categories" FontFamily="{StaticResource TextBold}" FontSize="20" Margin="20,20,20,0" />
-            <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="#2687ee" Text="SEE ALL" FontSize="12" FontFamily="{StaticResource TextBold}" Margin="20,20,20,0" />
-        </StackLayout>
-        <ScrollView Orientation="Horizontal">
-            <StackLayout Margin="20,12,20,0" Orientation="Horizontal">
-                <custom:PancakeView BackgroundColor="#5d6dff" Margin="0,0,4,0" HeightRequest="60" WidthRequest="160" CornerRadius="12">
-                    <Label HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="16" FontFamily="{StaticResource TextBold}" TextColor="#fff">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text=" " FontFamily="{StaticResource FontAwesomeSolid}" />
-                                <Span FontSize="16" Text="Art &amp; Cultures" FontFamily="{StaticResource TextRegular}" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </custom:PancakeView>
-                <custom:PancakeView BackgroundColor="#37d2ff" Margin="0,0,4,0" HeightRequest="60" WidthRequest="160" CornerRadius="12">
-                    <Label HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="16" FontFamily="{StaticResource TextBold}" TextColor="#fff">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text=" " FontFamily="{StaticResource FontAwesomeSolid}" />
-                                <Span FontSize="16" Text="Adventure" FontFamily="{StaticResource TextRegular}" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </custom:PancakeView>
-                <custom:PancakeView BackgroundColor="#2687ee" Margin="0,0,4,0" HeightRequest="60" WidthRequest="160" CornerRadius="12">
-                    <Label HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="16" FontFamily="{StaticResource TextBold}" TextColor="#fff">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text=" " FontFamily="{StaticResource FontAwesomeSolid}" />
-                                <Span FontSize="16" Text="Art &amp; Cultures" FontFamily="{StaticResource TextRegular}" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </custom:PancakeView>
-            </StackLayout>
-        </ScrollView>
+     
     </StackLayout>
 </ContentPage>

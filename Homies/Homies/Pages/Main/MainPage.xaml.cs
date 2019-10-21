@@ -14,29 +14,24 @@ namespace Homies.Pages.Main
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
+        ViewModels.MainModels.HomePageModel PageModel = new ViewModels.MainModels.HomePageModel();
+
         public MainPage()
         {
             InitializeComponent();
 
-            BindingContext = new MainPageViewModel
-            {
-                Destinations = new List<Destination>() {
-                 new Destination
-                 {
-                     Title = "Coffee",
-                     ImageUrl = "coffee.jpeg",
-                     Rating = 4.4f,
-                     Votes = 3829
-                 },
-                 new Destination
-                 {
-                     Title = "Bean Plant",
-                     ImageUrl = "plant.jpeg",
-                     Rating = 4.9f,
-                     Votes = 9783
-                 }
-                }
-            };
+            BindingContext = PageModel;
+
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var apiService = new Services.ApiService.ApiService();
+            var foods = await apiService.GetAllFoodsAsync();
+            foreach(var c in foods)
+                PageModel.Foods.Add(c);
         }
     }
 }

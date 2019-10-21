@@ -11,6 +11,9 @@ namespace AppService.Mappers
 
         public static FoodApiModel MapSingleFoodToApiModel(Data.Models.Food foodDbModel)
         {
+            if (foodDbModel == null)
+                return null;
+
             var foodApiModel = new Common.ApiModels.FoodModels.FoodApiModel()
             {
                 CategoryName = foodDbModel.Category.Name,
@@ -22,9 +25,9 @@ namespace AppService.Mappers
                 Pictures = foodDbModel.Pictures.Select(m => m.FileName).ToList()
             };
             if (foodDbModel.Pictures.Any())
-                foodApiModel.PicturePath = foodDbModel.Pictures.FirstOrDefault().FileName;
+                foodApiModel.PictureUrl = foodDbModel.Pictures.FirstOrDefault().FileName;
             else
-                foodApiModel.PicturePath = Common.GlobalConstants.DefaultFoodPicture;
+                foodApiModel.PictureUrl = Common.GlobalConstants.DefaultFoodPicture;
 
             return foodApiModel;
         }

@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace AppService.Controllers
 {
-    
+
     public class FoodsController : Base.BaseController
     {
         public FoodsController(IHomiesDataSystem data) : base(data)
@@ -23,16 +23,13 @@ namespace AppService.Controllers
                 .Take(count.Value)
                 .ToList();
 
-            return  Mappers.FoodMapper.MapFoodDbModelToApiModels(foods);
+            return Mappers.FoodMapper.MapFoodDbModelToApiModels(foods);
         }
 
         public Common.ApiModels.FoodModels.FoodApiModel Get(Guid id)
         {
             var foodDbModel = this.Data.Foods.GetById(id);
-            if(foodDbModel != null)
-                return Mappers.FoodMapper.MapSingleFoodToApiModel(foodDbModel);
-
-            return null;
+            return Mappers.FoodMapper.MapSingleFoodToApiModel(foodDbModel);
         }
 
     }

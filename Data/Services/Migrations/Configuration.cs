@@ -51,7 +51,7 @@ namespace Data.Services.Migrations
                 var userManager = new UserManager<ApplicationUser>(userStore);
 
                 var admin = new ApplicationUser
-                {
+                {   
                     UserName = "admin",
                     Email = "admin@Homies.com",
                     CreatedOn = DateTime.Now,

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -23,7 +24,7 @@ namespace Homies.Services.ApiService
             var json = JsonConvert.SerializeObject(registerModel);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var registerUrl = $"{Common.ApiConstants.HomiesApiUrl}/Account/Register";
+            var registerUrl = $"{Common.ApiConstants.OnlineHomiesUrl}{Common.ApiConstants.HomiesApi}/Account/Register";
 
             var response = await httpClient.PostAsync(new Uri(registerUrl), content);
             return response.IsSuccessStatusCode;
@@ -35,7 +36,7 @@ namespace Homies.Services.ApiService
             var content = new StringContent($"grant_type=password&username={email}&password={password}",
                 Encoding.UTF8, "application/x-www-form-urlencoded");
 
-            var repsonse = await httpClient.PostAsync($"{Common.ApiConstants.ApiClientUrl}/Token", content);
+            var repsonse = await httpClient.PostAsync($"{ApiConstants.OnlineHomiesUrl}/Token", content);
 
             var jsonResult = await repsonse.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<Common.Models.TokenResponse>(jsonResult);
@@ -48,7 +49,7 @@ namespace Homies.Services.ApiService
             var httpClient = new HttpClient();
 
             //the Foods Repsonse from the Server
-            var foodsResponse = await httpClient.GetStringAsync($"{Common.ApiConstants.HomiesApiUrl}/Foods");
+            var foodsResponse = await httpClient.GetStringAsync($"{ApiConstants.OnlineHomiesUrl}{ApiConstants.HomiesApi}/Foods");
             return JsonConvert.DeserializeObject<List<Common.ApiModels.FoodModels.FoodApiModel>>(foodsResponse);
         }
 
@@ -56,7 +57,7 @@ namespace Homies.Services.ApiService
         {
             var httpClient = new HttpClient();
 
-            var foodResponse = await httpClient.GetStringAsync($"{Common.ApiConstants.HomiesApiUrl}/Foods/{id}");
+            var foodResponse = await httpClient.GetStringAsync($"{ApiConstants.OnlineHomiesUrl}{ApiConstants.HomiesApi}/Foods/{id}");
             return JsonConvert.DeserializeObject<Common.ApiModels.FoodModels.FoodApiModel>(foodResponse);
         }
 
