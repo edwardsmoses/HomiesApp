@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 
@@ -18,7 +19,11 @@ namespace AppService
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             //Log Request And Response
-            config.MessageHandlers.Add(new Services.LogHandlers.CustomLogHandler());
+            config.MessageHandlers.Add(new Services.LogHandlers.HomiesLogHandler());
+
+            //enable cors
+            EnableCrossSiteRequests(config);
+
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -28,7 +33,16 @@ namespace AppService
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-           
+
+        }
+
+        private static void EnableCrossSiteRequests(HttpConfiguration config)
+        {
+            var cors = new EnableCorsAttribute(
+                origins: "*",
+                headers: "*",
+                methods: "*");
+            config.EnableCors(cors);
         }
     }
 }

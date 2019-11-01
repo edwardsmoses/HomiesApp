@@ -20,7 +20,7 @@ namespace AppService.Controllers
         {
             var mealsOfTheDay = new List<FoodApiModel>();
 
-            var foods = this.Data.Foods.All().Where(m => m.CanFoodShowOnApp && m.IsMealOfTheDay).OrderByDescending(m => m.CreatedOn).ToList();
+            var foods = this.HomiesData.Foods.All().Where(m => m.CanFoodShowOnApp && m.IsMealOfTheDay).OrderByDescending(m => m.CreatedOn).ToList();
             return Mappers.FoodMapper.MapFoodDbModelToApiModels(foods);
         }
     }

@@ -42,36 +42,6 @@
                         </StackLayout>
                     </custom:PancakeView>
                 </StackLayout>
-                <custom:PancakeView HeightRequest="100" BackgroundColor="#aaeeeeee" CornerRadius="20,0,0,40" HorizontalOptions="FillAndExpand" VerticalOptions="End">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0" Margin="20,0,0,0" Spacing="0" VerticalOptions="Center">
-                            <Label Text="Fried Rice" FontSize="24" FontFamily="{StaticResource TextBold}" />
-                            <Label Text="Meal of the Day" TextColor="#666" FontSize="16" FontFamily="{StaticResource TextBold}" />
-                        </StackLayout>
-                        <StackLayout Grid.Column="1" Spacing="0" Margin="0,0,20,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
-                            <Label FontSize="20" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontFamily="{StaticResource FontAwesomeSolid}">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="" TextColor="#ffac2c" />
-                                        <Span Text="" TextColor="#dddee0" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label Margin="0,8,0,0" HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Recommendation" TextColor="#666" FontSize="16" FontFamily="{StaticResource TextRegular}">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="4.3 " FontSize="16" FontFamily="{StaticResource TextBold}" TextColor="#2a2a2a" />
-                                        <Span Text="(3478 views)" FontSize="12" FontFamily="{StaticResource TextRegular}" TextColor="#2a2a2a" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                        </StackLayout>
-                    </Grid>
-                </custom:PancakeView>
             </Grid>
         </custom:PancakeView>
         <StackLayout Orientation="Horizontal">
@@ -79,29 +49,61 @@
             <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="#2687ee" Text="SEE ALL" FontSize="12" FontFamily="{StaticResource TextBold}" Margin="20,20,20,0" />
         </StackLayout>
 
-        <!--Alternative implementation-->
-        <ScrollView Orientation="Horizontal">
-            <StackLayout Spacing="0" Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Foods}" HeightRequest="120">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Padding="10,0">
-                            <custom:PancakeView HeightRequest="120" WidthRequest="200" IsClippedToBounds="true" CornerRadius="12">
-                                <Grid>
-                                    <Image Aspect="AspectFill" Source="{Binding FullPictureUrl}" />
-                                    <custom:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundGradientStartColor="Transparent" BackgroundGradientEndColor="#222" />
-                                    <StackLayout Spacing="0" Margin="12" VerticalOptions="EndAndExpand">
-                                        <Label FontSize="16" FontFamily="{StaticResource TextBold}" TextColor="#fff" Text="{Binding Name}" />
-                                        <Label FontSize="16" FontFamily="{StaticResource TextBold}" TextColor="#fff" Text="{Binding PriceInCurrency}" />
-
-                                        <!--<Label FontSize="12" FontFamily="{StaticResource TextRegular}" TextColor="#ccc" Text="{Binding RatingVotes}" />-->
-                                    </StackLayout>
-                                </Grid>
-                            </custom:PancakeView>
+       
+        <ListView Margin="0"
+                  HasUnevenRows="True"
+                  ItemSelected="Handle_ItemTapped"
+                  SeparatorVisibility="None"
+                      RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsRefreshing, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                  VerticalScrollBarVisibility="Never"
+                  VerticalOptions="FillAndExpand" ItemsSource="{Binding Foods}">
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="20"
+                              HeightRequest="150"
+                              BackgroundColor="Transparent"
+                              ColumnSpacing="20"
+                              RowSpacing="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Frame Grid.RowSpan="4"
+                                   Margin="0"
+                                   Padding="0"
+                                   CornerRadius="10"
+                                   HasShadow="False"
+                                   IsClippedToBounds="True">
+                                <Image Aspect="AspectFill" Source="{Binding FullPictureUrl}" />
+                            </Frame>
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   Style="{StaticResource HeaderLabel}"
+                                   Text="{Binding Name}" />
+                            <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Style="{StaticResource AuthorLabel}"
+                                   Text="{Binding CategoryName}" />
+                            <Label Grid.Row="2"
+                                   Grid.Column="1"
+                                   Style="{StaticResource GenreLabel}"
+                                   Text="{Binding PriceInCurrency}" />
                         </Grid>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </StackLayout>
-        </ScrollView>
-     
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
     </StackLayout>
 </ContentPage>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+               xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:panCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             x:Class="Homies.Pages.Foods.FoodDetail"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <StackLayout x:Name="header"
+                     Padding="20,30,20,30"
+                     Orientation="Horizontal"
+                     Spacing="20">
+                    <Image Source="back" />
+                    <Label Style="{StaticResource TextBold}"
+                   Text="back"
+                   HorizontalOptions="FillAndExpand" />
+                    <Image Source="search" HorizontalOptions="End" />
+                    <Image Source="hamburger" HorizontalOptions="End" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Handle_Tapped" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <panCake:PancakeView x:Name="cakeDetail"
+                             Margin="0"
+                             Padding="50,50,0,0"
+                             BackgroundColor="#ffffff"
+                             CornerRadius="30,30,0,0"
+                             HasShadow="false"
+                             VerticalOptions="FillAndExpand">
+                    <StackLayout Spacing="10" VerticalOptions="FillAndExpand">
+
+                    <Frame Style="{StaticResource DetailCarousalFrame}">
+                        <Image Aspect="AspectFill" Source="{Binding Food.FullPictureUrl}" />
+                    </Frame>
+                        
+                    <Label Style="{StaticResource HeaderLabel}" Text="{Binding Food.Name}" />
+                        <Label Style="{StaticResource AuthorLabel}" Text="{Binding Food.CategoryName}" />
+                        <Label Style="{StaticResource GenreLabel}" Text="{Binding Food.PriceInCurrency}" />
+                        <Label Margin="20,10,20,0"
+                       FontAttributes="None"
+                       FontSize="14"
+                       LineHeight="1.5"
+                       Style="{StaticResource TextBold}"
+                       Text="{Binding Food.Description}"
+                       VerticalOptions="FillAndExpand" />
+                        <panCake:PancakeView Padding="35"
+                                     BackgroundColor="#99cbe4"
+                                     CornerRadius="60,0,0,0"
+                                     HorizontalOptions="End"
+                                     VerticalOptions="End">
+                            <Label Style="{StaticResource TextBold}"
+                           Text="Add To Cart"
+                           TextColor="Green"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                        </panCake:PancakeView>
+                    </StackLayout>
+                </panCake:PancakeView>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

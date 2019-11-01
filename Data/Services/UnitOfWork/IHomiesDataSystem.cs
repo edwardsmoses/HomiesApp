@@ -13,7 +13,6 @@ namespace Data.Services.UnitOfWork
         IDeletableEntityRepository<Food> Foods { get; }
         IDeletableEntityRepository<FoodPicture> FoodPictures { get; }
         IDeletableEntityRepository<Category> Categories { get; }
-
         void SaveChanges();
         Task SaveChangesAsync();
     }

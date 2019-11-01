@@ -15,7 +15,7 @@ namespace AppService.Controllers.Base
     {
         protected BaseController(IHomiesDataSystem data)
         {
-            this.Data = data;
+            this.HomiesData = data;
         }
 
         protected BaseController(IHomiesDataSystem data, ApplicationUser userProfile)
@@ -23,7 +23,7 @@ namespace AppService.Controllers.Base
         {
         }
 
-        public IHomiesDataSystem Data { get; }
+        public IHomiesDataSystem HomiesData { get; }
        
     }
 }

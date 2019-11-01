@@ -1,4 +1,5 @@
-﻿using Common.Models;
+﻿using Common.ApiModels.FoodModels;
+using Common.Models;
 using Homies.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -28,10 +29,21 @@ namespace Homies.Pages.Main
         {
             base.OnAppearing();
 
-            var apiService = new Services.ApiService.ApiService();
-            var foods = await apiService.GetAllFoodsAsync();
-            foreach(var c in foods)
-                PageModel.Foods.Add(c);
+            if (PageModel.Foods.Count == 0)
+                PageModel.LoadItemsCommand.Execute(null);
+        }
+
+        async void Handle_ItemTapped(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as FoodApiModel;
+            if (item == null)
+                return;
+
+            await Navigation.PushModalAsync(new Foods.FoodDetail(item.Id.ToString()), true);
+
+            // Manually deselect item.
+            ((ListView)sender).SelectedItem = null;
+
         }
     }
 }

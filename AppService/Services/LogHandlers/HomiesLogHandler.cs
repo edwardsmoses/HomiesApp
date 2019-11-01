@@ -8,7 +8,7 @@ using System.Web;
 
 namespace AppService.Services.LogHandlers
 {
-    public class CustomLogHandler : DelegatingHandler
+    public class HomiesLogHandler : DelegatingHandler
     {
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
@@ -37,7 +37,7 @@ namespace AppService.Services.LogHandlers
         {
             logMetadata.ResponseStatusCode = response.StatusCode;
             logMetadata.ResponseTimestamp = DateTime.Now;
-            logMetadata.ResponseContentType = response.Content.Headers.ContentType.MediaType;
+            logMetadata.ResponseContentType = response.Content?.Headers.ContentType.MediaType;
             return logMetadata;
         }
 
