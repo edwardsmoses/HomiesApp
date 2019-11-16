@@ -91,7 +91,7 @@ namespace Homies.ViewModels.AccountModels
                        else
                        {
                            //if the Access Details is right
-                           await SecureStorage.SetAsync(Common.GlobalConstants.AppAuthToken, tokenResponse.access_token);
+                           //await SecureStorage.SetAsync(Common.GlobalConstants.AppAuthToken, tokenResponse.access_token);
 
                            //then Go to the Main Page
                            await Shell.Current.GoToAsync("//Main", true);
