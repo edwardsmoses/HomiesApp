@@ -63,15 +63,14 @@
                         </Frame>
                     </StackLayout>
 
-                    <Button WidthRequest="200" HeightRequest="50" FontSize="25" Text="Sign Up" FontAttributes="None" TextColor="#FFFFFFFF" FontFamily="TextBold" BackgroundColor="#9909A15A" CornerRadius="5"  Margin="20">
-                        
-                    </Button>
+                    <Button WidthRequest="200" HeightRequest="50" FontSize="25" Text="Sign Up" FontAttributes="None" 
+                            TextColor="#FFFFFFFF" FontFamily="TextBold" BackgroundColor="#09A15A" CornerRadius="5"  Margin="20"/>
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="20">
                         <Label Text="Have an account?" FontFamily="TextBold" FontSize="20" FontAttributes="None" TextColor="#FF9FA2B1" />
                         <Label Text="Sign In." TextColor="#00d672" FontFamily="TextBold" FontSize="20">
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer x:Name="TapSignIn" Tapped="TapSignIn_Tapped"></TapGestureRecognizer>
+                                <TapGestureRecognizer Tapped="TapSignIn_Tapped"></TapGestureRecognizer>
                             </Label.GestureRecognizers>
                         </Label>
                     </StackLayout>

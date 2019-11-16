@@ -26,5 +26,10 @@ namespace Homies.Pages.Welcome
         {
             await Shell.Current.GoToAsync("//SignUp");
         }
+
+        private async void SignButton_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//Login");
+        }
     }
 }
