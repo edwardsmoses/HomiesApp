@@ -21,15 +21,6 @@ namespace Homies.Pages.Welcome
 
             BindingContext = viewModel;
 
-            EmailEntry.Completed += (object sender, EventArgs e) => {
-                PasswordEntry.Focus();
-            };
-
-            PasswordEntry.Completed += (object sender, EventArgs e) => {
-                viewModel.LoginCommand.Execute(null);
-            };
-
-
         }
 
         private async void TapSignUp_TappedAsync(object sender, EventArgs e)
