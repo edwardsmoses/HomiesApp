@@ -8,43 +8,82 @@
              Shell.NavBarIsVisible="False"
              Shell.FlyoutBehavior="Disabled">
 
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackLayout Grid.Row="0" Margin="0,40,0,0" HorizontalOptions="Center">
-            <Image WidthRequest="60" Source="icon.png"></Image>
-            <Label Text="Create My Homies Account" FontSize="Medium"></Label>
-        </StackLayout>
+        <RelativeLayout Grid.Row="0" HorizontalOptions="FillAndExpand">
+            <Image Source="bgHomiesAuth" Aspect="AspectFill" ></Image>
+            <StackLayout Padding="30,70" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <Image WidthRequest="60" Source="icon.png" HorizontalOptions="StartAndExpand"></Image>
+                <Label Text="Welcome" HorizontalOptions="StartAndExpand" FontFamily="TextBold" FontSize="25" FontAttributes="None" TextColor="#FF000833" />
+                <Label Text="Sign Up" HorizontalOptions="StartAndExpand" FontFamily="TextBold" FontSize="35" FontAttributes="None" TextColor="#FF000833" />
+            </StackLayout>
 
-        <StackLayout Grid.Row="1" Margin="40,0,40,0" VerticalOptions="CenterAndExpand">
-            <Label Text="Email"></Label>
-            <Entry Placeholder="Email" BackgroundColor="Green" TextColor="White" x:Name="EmailEntry" Text="{Binding Email, Mode=TwoWay}"></Entry>
 
-            <Label Text="Password"></Label>
-            <Entry Placeholder="Password" BackgroundColor="Green" TextColor="White" x:Name="PasswordEntry" IsPassword="True"
-                   Text="{Binding Password, Mode=TwoWay}"></Entry>
+        </RelativeLayout>
 
-            <Label Text="Repeat Password Again"></Label>
-            <Entry Placeholder="Confirm Password" BackgroundColor="Green" TextColor="White" x:Name="ConfirmPasswordEntry" IsPassword="True"
-                   Text="{Binding ConfirmPassword, Mode=TwoWay}"></Entry>
+        <Frame BackgroundColor="#FFFBFBFB" Grid.Row="1" CornerRadius="15" Margin="0,-65,0,0">
+            <Frame.Content>
+                <StackLayout>
+                    <StackLayout Orientation="Vertical" Margin="10">
+                        <Label Text="Email" HorizontalOptions="StartAndExpand" FontFamily="TextBold" FontSize="15" FontAttributes="None" TextColor="#FF000833" />
+                        <Frame WidthRequest="343" HeightRequest="50" HasShadow="true" BackgroundColor="#FFFFFFFF" CornerRadius="5">
+                            <StackLayout Orientation="Horizontal">
+                                <Image WidthRequest="24" Source="user_person.png" Aspect="AspectFit" HorizontalOptions="Start"></Image>
+                                <Entry HorizontalTextAlignment="Start" TextColor="Black" PlaceholderColor="Black" HorizontalOptions="FillAndExpand" 
+                                       Text="{Binding Email, Mode=TwoWay}"></Entry>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
 
-            <Button Text="Sign Up" BackgroundColor="Green" TextColor="White" CornerRadius="30" Margin="10,40"
-                    HeightRequest="50" x:Name="SignUpButton" Command="{Binding SignUpCommand}"></Button>
+                    <StackLayout Orientation="Vertical" Margin="10">
+                        <Label Text="Password" HorizontalOptions="StartAndExpand" FontFamily="TextBold" FontSize="15" FontAttributes="None" TextColor="#FF000833" />
+                        <Frame WidthRequest="343" HeightRequest="50" HasShadow="true" BackgroundColor="#FFFFFFFF" CornerRadius="5">
+                            <StackLayout Orientation="Horizontal">
+                                <Image WidthRequest="24" Source="user_lock.png" Aspect="AspectFit" HorizontalOptions="Start"></Image>
+                                <Entry HorizontalTextAlignment="Start" IsPassword="True" TextColor="Black" PlaceholderColor="Black" HorizontalOptions="FillAndExpand" 
+                                         Text="{Binding Password, Mode=TwoWay}"></Entry>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
 
-        </StackLayout>
 
-        <StackLayout Grid.Row="2" Padding="20" Orientation="Horizontal" HorizontalOptions="Center">
-            <Label Text="Already have an account?" TextColor="#594748"></Label>
-            <Label Text="Sign In." TextColor="Green">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="TapSignIn" Tapped="TapSignIn_Tapped"></TapGestureRecognizer>
-                </Label.GestureRecognizers>
-            </Label>
-        </StackLayout>
+                    <StackLayout Orientation="Vertical" Margin="10">
+                        <Label Text="Confirm Password" HorizontalOptions="StartAndExpand" FontFamily="TextBold" FontSize="15" FontAttributes="None" TextColor="#FF000833" />
+                        <Frame WidthRequest="343" HeightRequest="50" HasShadow="true" BackgroundColor="#FFFFFFFF" CornerRadius="5">
+                            <StackLayout Orientation="Horizontal">
+                                <Image WidthRequest="24" Source="user_lock.png" Aspect="AspectFit" HorizontalOptions="Start"></Image>
+                                <Entry HorizontalTextAlignment="Start" IsPassword="True" TextColor="Black" PlaceholderColor="Black" HorizontalOptions="FillAndExpand" 
+                                        Text="{Binding ConfirmPassword, Mode=TwoWay}"></Entry>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+
+                    <Button WidthRequest="200" HeightRequest="50" FontSize="25" Text="Sign Up" FontAttributes="None" TextColor="#FFFFFFFF" FontFamily="TextBold" BackgroundColor="#9909A15A" CornerRadius="5"  Margin="20">
+                        
+                    </Button>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="20">
+                        <Label Text="Have an account?" FontFamily="TextBold" FontSize="20" FontAttributes="None" TextColor="#FF9FA2B1" />
+                        <Label Text="Sign In." TextColor="#00d672" FontFamily="TextBold" FontSize="20">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="TapSignIn" Tapped="TapSignIn_Tapped"></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+
+
+                </StackLayout>
+
+            </Frame.Content>
+
+
+        </Frame>
+
 
         <ActivityIndicator
                     Margin="0,200,0,0"
@@ -61,6 +100,7 @@
                             iOS="100" />
             </ActivityIndicator.WidthRequest>
         </ActivityIndicator>
+
 
     </Grid>
 </ContentPage>

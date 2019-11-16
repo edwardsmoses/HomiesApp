@@ -4,40 +4,33 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Homies.Pages.Welcome.WelcomePage" BackgroundImageSource="stock.jpg"
+             x:Class="Homies.Pages.Welcome.WelcomePage"
              Shell.NavBarIsVisible="False"
              Shell.FlyoutBehavior="Disabled">
     <ContentPage.Content>
-        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
 
-            <StackLayout HorizontalOptions="FillAndExpand"
-               VerticalOptions="FillAndExpand"
-               AbsoluteLayout.LayoutBounds="0, 0, 1, 0.9"
-               AbsoluteLayout.LayoutFlags="All"
-               x:Name="logoLayout">
-                <StackLayout Padding="30">
-                    <Image Source="icon.png" WidthRequest="100" />
-                </StackLayout>
+            <RelativeLayout Grid.Row="0" HeightRequest="400" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Image Source="illustration3"  Margin="0,70,0,0" Aspect="AspectFill" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Image>
+            </RelativeLayout>
+
+
+            <StackLayout WidthRequest="375" Grid.Row="1" Orientation="Vertical" Padding="40,60" BackgroundColor="#FFFFFFFF">
+                <Label Text="Fresh Food" HorizontalOptions="CenterAndExpand" FontFamily="TextBold" FontSize="40" FontAttributes="None" TextColor="#FF000833" />
+                <Label Text="Lorem ipsum dolor sit amet, consectetuer
+ adipiscing elit. Aenean commodo ligula
+ eget dolor." HorizontalOptions="CenterAndExpand" FontFamily="TextBold"  FontSize="Title" FontAttributes="None" TextColor="#FF2A2A2A" />
+
+                <Button WidthRequest="200" FontSize="25" Text="Sign In" HeightRequest="50" FontAttributes="None" TextColor="#FFFFFFFF" FontFamily="TextBold" 
+                            BackgroundColor="#9909A15A" CornerRadius="5"  Margin="20,40,20,0" x:Name="LoginButton" Clicked="LoginButton_Clicked"/>
+
             </StackLayout>
 
-            <StackLayout AbsoluteLayout.LayoutBounds="0, 0.7, 1, 0.1" 
-                AbsoluteLayout.LayoutFlags="All">
-                <StackLayout  HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
-                    <Label Text="Welcome to Homies" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="White"  HorizontalOptions="CenterAndExpand"/>
-                    <Label Text="Book your lunch with homies" HorizontalTextAlignment="Center" TextColor="White" HorizontalOptions="CenterAndExpand"/>
-                </StackLayout>
+        </Grid>
 
-            </StackLayout>
-
-
-
-            <Button BackgroundColor="Green" TextColor="White" BorderRadius="0" Text="Login"  
-				AbsoluteLayout.LayoutBounds="0, 1, 0.5, 0.1" 
-                AbsoluteLayout.LayoutFlags="All" x:Name="LoginButton" Clicked="LoginButton_Clicked" />
-
-            <Button BackgroundColor="Black" TextColor="White" BorderRadius="0" Text="Sign Up"
-			    AbsoluteLayout.LayoutBounds="1, 1, 0.5, 0.1"  x:Name="SignUpButton" Clicked="SignUpButton_Clicked"
-                AbsoluteLayout.LayoutFlags="All" />
-        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
