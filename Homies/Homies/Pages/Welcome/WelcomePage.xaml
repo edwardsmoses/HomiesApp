@@ -3,32 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              mc:Ignorable="d"
              x:Class="Homies.Pages.Welcome.WelcomePage"
              Shell.NavBarIsVisible="False"
              Shell.FlyoutBehavior="Disabled">
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-
-            <RelativeLayout Grid.Row="0" HeightRequest="400" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                <Image Source="illustration3"  Margin="0,70,0,0" Aspect="AspectFill" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Image>
-            </RelativeLayout>
 
 
-            <StackLayout WidthRequest="375" Grid.Row="1" Orientation="Vertical" Padding="40,60" BackgroundColor="#FFFFFFFF">
-                <Label Text="Fresh Food" HorizontalOptions="CenterAndExpand" FontFamily="TextBold" FontSize="40" FontAttributes="None" TextColor="#FF000833" />
-                <Label Text="Lorem ipsum dolor sit amet, consectetuer
- adipiscing elit. Aenean commodo ligula
- eget dolor." HorizontalOptions="CenterAndExpand" FontFamily="TextBold"  FontSize="Title" FontAttributes="None" TextColor="#FF2A2A2A" />
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                <Button WidthRequest="200" FontSize="25" Text="Sign In" HeightRequest="50" FontAttributes="None" TextColor="#FFFFFFFF" FontFamily="TextBold" 
-                            BackgroundColor="#9909A15A" CornerRadius="5"  Margin="20,40,20,0" x:Name="SignButton" Clicked="SignButton_Clicked"/>
+            <cv:CarouselViewControl x:Name="cvWalkthrough" ShowIndicators="true" IndicatorsShape="Circle" IndicatorsTintColor="LightGray"
+                                CurrentPageIndicatorTintColor="#09A15A" Orientation="Horizontal" InterPageSpacing="0"  
+                                ItemsSource="{Binding WalkthroughItems}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+                                AnimateTransition="True">
+                <cv:CarouselViewControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalOptions="FillAndExpand">
+                            <Image Source="{Binding Image}" Aspect="Fill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                            <StackLayout Orientation="Vertical" Spacing="20" HorizontalOptions="Start" VerticalOptions="End" WidthRequest="300" Margin="20,50">
 
-            </StackLayout>
+                                <Image WidthRequest="60" Source="icon.png" HorizontalOptions="StartAndExpand"></Image>
+
+
+                                <Frame HasShadow="False" BackgroundColor="#09A15A" CornerRadius="15" 
+                                   Padding="0" HorizontalOptions="Start" VerticalOptions="Start"
+                                   WidthRequest="100" HeightRequest="30">
+                                    <Label Text="{Binding Heading}" FontSize="14" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                                </Frame>
+                                
+                                <Label x:Name="CaptionTxt" Text="{Binding Caption}" FontSize="20" TextColor="White" Margin="0,0,0,50"/>
+
+                                <Button WidthRequest="200" Text="Get Started" FontAttributes="None" Clicked="Button_Clicked" HorizontalOptions="StartAndExpand"
+                            TextColor="#FFFFFFFF" FontFamily="TextBold" BackgroundColor="#09A15A" CornerRadius="5"/>
+
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </cv:CarouselViewControl.ItemTemplate>
+            </cv:CarouselViewControl>
 
         </Grid>
 
