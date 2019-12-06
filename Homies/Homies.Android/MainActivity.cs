@@ -17,10 +17,18 @@ namespace Homies.Droid
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        internal static MainActivity Instance { get; private set; }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+
+            //Un-Comment for FullScreen Hiding the Status-Bar
+            //Window.AddFlags(WindowManagerFlags.Fullscreen);
+            //Window.ClearFlags(WindowManagerFlags.ForceNotFullscreen);
+
+            Instance = this;
 
             base.OnCreate(savedInstanceState);
 

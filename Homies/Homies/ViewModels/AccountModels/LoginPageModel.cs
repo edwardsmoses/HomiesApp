@@ -77,16 +77,18 @@ namespace Homies.ViewModels.AccountModels
 
                    if (Connectivity.NetworkAccess.Equals(NetworkAccess.ConstrainedInternet) || Connectivity.NetworkAccess.Equals(NetworkAccess.Internet))
                    {
-                       var apiService = new Services.ApiService.ApiService();
+                       //var apiService = new Services.ApiService.ApiService();
 
-                       var tokenResponse = await apiService.GetTokenAsync(Email, Password);
+                       //var tokenResponse = await apiService.GetTokenAsync(Email, Password);
 
-                       if (string.IsNullOrEmpty(tokenResponse.access_token))
+                       //if (string.IsNullOrEmpty(tokenResponse.access_token))
+                       if(true)
                        {
                            //To-Do
                            //Show Snackbar Message letting the User know his UserName/Password is wrong
                            IsBusy = false;
 
+                           ShowSnackbar("Uh-oh! It seems your Username or Password is incorrect.");
                        }
                        else
                        {
@@ -97,12 +99,14 @@ namespace Homies.ViewModels.AccountModels
                            await Shell.Current.GoToAsync("//Main", true);
                        }
                    }
-
-
-                   //To-Do 
-                   //Show Snackbar Message saying There Is No Internet
-                   IsBusy = false;
-
+                   else
+                   {
+                       //To-Do 
+                       //Show Snackbar Message saying There Is No Internet
+                       IsBusy = false;
+                       ShowSnackbar("Uh-oh! You aren't connected to the Internet.");
+                   }
+                 
                });
             }
         }

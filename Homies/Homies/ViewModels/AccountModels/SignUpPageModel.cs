@@ -113,10 +113,13 @@ namespace Homies.ViewModels.AccountModels
                        //Show Snackbar Message saying something went wrong
                        IsBusy = false;
                    }
-
-                   //To-Do 
-                   //Show Snackbar Message saying There Is No Internet
-                   IsBusy = false;
+                   else
+                   {
+                       //To-Do 
+                       //Show Snackbar Message saying There Is No Internet
+                       IsBusy = false;
+                       ShowSnackbar("Uh-oh! You aren't connected to the Internet.");
+                   }
 
                });
             }
